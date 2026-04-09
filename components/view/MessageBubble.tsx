@@ -8,7 +8,7 @@ export default function MessageBubble({ message }: { message: ChatMessage }) {
 
     return (
         <View style={[styles.wrapper, isUser ? styles.right : styles.left]}>
-            <View style={[styles.bubble, isUser ? styles.userBubble : styles.assistantBubble]}>
+            <View style={[styles.bubble, isUser ? styles.userBubble : styles.assistantBubble,]}>
                 <Text style={[styles.text, isUser ? styles.userText : styles.assistantText]}>
                     {message.content}
                 </Text>

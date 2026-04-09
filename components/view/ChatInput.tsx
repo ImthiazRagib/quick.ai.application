@@ -1,6 +1,7 @@
 import { Colors } from '@/constants/theme';
+import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Keyboard, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function ChatInput({ onSend, loading }: { onSend: (text: string) => Promise<void>; loading: boolean }) {
   const [text, setText] = useState('');
@@ -28,7 +29,8 @@ export default function ChatInput({ onSend, loading }: { onSend: (text: string) 
         style={[styles.button, loading && styles.buttonDisabled]}
         disabled={loading}
       >
-        <Text style={styles.buttonText}>{loading ? '...' : 'Send'}</Text>
+        {/* <Text style={styles.buttonText}>{loading ? '...' : 'Send'}</Text> */}
+        {loading ? <ActivityIndicator /> : <Feather name="send" size={16} color="#fff" />}
       </TouchableOpacity>
     </View>
   );
