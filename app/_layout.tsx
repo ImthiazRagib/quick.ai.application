@@ -1,6 +1,7 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import 'react-native-reanimated';
 
 import { ChatProvider } from '@/context/ChatContext';
@@ -16,8 +17,8 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <ChatProvider>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack screenOptions={{headerShown: false}}>
+          <Stack.Screen name="(drawer)" />
         </Stack>
         <StatusBar style="auto" />
       </ChatProvider>

@@ -4,9 +4,8 @@ import MessageBubble from "@/components/view/MessageBubble";
 import TypingIndicator from "@/components/view/TypingIndicator";
 import { Colors } from "@/constants/theme";
 import { useChat } from "@/hooks/use-chat";
-import { Ionicons } from '@expo/vector-icons';
 import { useRef } from "react";
-import { FlatList, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
@@ -19,16 +18,16 @@ export default function HomeScreen() {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <Image
-            source={require('../assets/quickdropx.png')}
+            source={require('../../assets/quickdropx.png')}
             style={{ width: 32, height: 32, borderRadius: 6 }}
           />
           <Text style={styles.headerTitle}>Ai Support</Text>
           <TouchableOpacity onPress={resetChat} style={styles.clearButton}>
             <Ionicons name="trash-outline" size={22} color="#111" />
           </TouchableOpacity>
-        </View>
+        </View> */}
 
         <View style={styles.content}>
           {messages.length === 0 ? (
