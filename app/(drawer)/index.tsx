@@ -5,7 +5,7 @@ import TypingIndicator from "@/components/view/TypingIndicator";
 import { Colors } from "@/constants/theme";
 import { useChat } from "@/hooks/use-chat";
 import { useRef } from "react";
-import { FlatList, KeyboardAvoidingView, Platform, StyleSheet, View } from "react-native";
+import { FlatList, Keyboard, KeyboardAvoidingView, Platform, Pressable, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
@@ -14,11 +14,12 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        {/* <View style={styles.header}>
+      <Pressable style={styles.flex} onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          {/* <View style={styles.header}>
           <Image
             source={require('../../assets/quickdropx.png')}
             style={{ width: 32, height: 32, borderRadius: 6 }}
@@ -29,31 +30,35 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View> */}
 
-        <View style={styles.content}>
-          {messages.length === 0 ? (
-            <EmptyState />
-          ) : (
-            <FlatList
-              ref={flatListRef}
-              data={messages}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => <MessageBubble message={item} />}
-              contentContainerStyle={styles.listContent}
-              onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-              onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
-            />
-          )}
+          <View style={styles.content}>
+            {messages.length === 0 ? (
+              <EmptyState />
+            ) : (
+              <FlatList
+                ref={flatListRef}
+                data={messages}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <MessageBubble message={item} />}
+                contentContainerStyle={styles.listContent}
+                onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+                onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
+              />
+            )}
 
-          {loading && <TypingIndicator />}
-        </View>
+            {loading && <TypingIndicator />}
+          </View>
 
-        <ChatInput onSend={sendMessage} loading={loading} />
-      </KeyboardAvoidingView>
+          <ChatInput onSend={sendMessage} loading={loading} />
+        </KeyboardAvoidingView>
+      </Pressable>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   safeArea: {
     flex: 1,
     backgroundColor: Colors['light'].background,
