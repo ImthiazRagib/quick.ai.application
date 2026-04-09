@@ -1,6 +1,6 @@
 import { sendMessageToAI } from '@/services/ai-service';
-import { loadMessages, saveMessages } from '@/storage/chat-storage';
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { clearMessages, loadMessages, saveMessages } from '@/storage/chat-storage';
+import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 import { ChatMessage } from '../types/chat';
 import { generateId } from '../utils/id';
 import { nowIso } from '../utils/time';
@@ -74,6 +74,20 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
             };
 
             setMessages((prev) => [...prev, assistantError]);
+        } finally {
+            setLoading(false);
         }
     };
+
+    const resetChat = async () => {
+        setMessages([]);
+        await clearMessages();
+    };
+
+    const value = useMemo(
+        () => ({ messages, loading, initialized, sendMessage, resetChat }),
+        [messages, loading, initialized]
+    );
+
+    return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 };

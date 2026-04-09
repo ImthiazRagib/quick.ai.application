@@ -8,8 +8,8 @@ export const saveMessages = async (messages: ChatMessage[]) => {
 };
 
 export const loadMessages = async (): Promise<ChatMessage[]> => {
-  const raw = await AsyncStorage.getItem(CHAT_STORAGE_KEY);
-  return raw ? JSON.parse(raw) : [];
+  const raw = await AsyncStorage.getItem(CHAT_STORAGE_KEY) ?? '[]';
+  return JSON.parse(raw);
 };
 
 export const clearMessages = async () => {

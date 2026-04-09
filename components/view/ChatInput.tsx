@@ -1,7 +1,6 @@
 import { Colors } from '@/constants/theme';
 import React, { useState } from 'react';
-import { Keyboard, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
-import { View } from 'react-native-reanimated/lib/typescript/Animated';
+import { Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function ChatInput({ onSend, loading }: { onSend: (text: string) => Promise<void>; loading: boolean }) {
   const [text, setText] = useState('');
