@@ -1,29 +1,50 @@
-# 🤖 AI Mobile Chat App (Claude-like)
+# 🚀 QuickDropX AI Support
 
-A minimal AI-powered mobile chat application built using **React Native + Expo + TypeScript**.  
-This project demonstrates how to build a clean, scalable AI chat interface similar to Claude or ChatGPT.
+QuickDropX AI Support is a smart AI-powered customer support system built for eCommerce and dropshipping platforms. It provides real-time automated assistance for customers using a modern chat interface similar to Claude or ChatGPT.
 
 ---
 
-## 🚀 Features
+## 🧠 Overview
 
-- ✨ Minimal and modern UI
-- 💬 Chat interface (user + assistant messages)
-- ⏳ Typing indicator
-- 💾 Local chat persistence (AsyncStorage)
-- 🔌 API integration ready
-- ⚡ Fast and lightweight architecture
-- 📱 Cross-platform (iOS, Android, Web)
+QuickDropX AI Support helps businesses automate customer interactions including:
+
+- Order tracking
+- Product inquiries
+- Refund requests
+- FAQs
+- Onboarding guidance
+
+The system is designed to reduce manual workload and provide 24/7 intelligent support.
+
+---
+
+## ✨ Features
+
+- 🤖 AI-powered chat assistant
+- 💬 Real-time messaging interface
+- 📦 Order tracking support
+- 🛒 eCommerce integration ready
+- ⚡ Fast and scalable architecture
+- 📱 Mobile-first design (React Native)
+- 🔌 API-driven backend integration
+- 💾 Local chat persistence
+- 🎯 Minimal and clean UI
 
 ---
 
 ## 🧱 Tech Stack
 
-- React Native
-- Expo
+### Frontend
+- React Native (Expo)
 - TypeScript
-- Expo Router
-- AsyncStorage
 - Context API
+
+### Backend
+- NestJS
+- PostgreSQL / MySQL
+- Redis (for caching & queues)
+
+### AI Integration
+- OpenAI / Claude / Custom LLM API
 
 ---
