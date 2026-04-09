@@ -52,7 +52,7 @@ export default function DrawerLayout() {
                 }}
             />
 
-            {/* <Drawer.Screen
+            <Drawer.Screen
                 name="history"
                 options={{
                     title: 'History',
@@ -60,7 +60,7 @@ export default function DrawerLayout() {
                         <Ionicons name="time-outline" size={size} color={color} />
                     ),
                 }}
-            /> */}
+            />
 
             {/* <Drawer.Screen
         name="profile"
