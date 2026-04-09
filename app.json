@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Quick AI Support",
-    "slug": "quick.ai.application",
+    "slug": "quick-ai-support",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/quickdropx.png",
@@ -30,7 +30,6 @@
       [
         "expo-splash-screen",
         {
-          // "image": "./assets/images/splash-icon.png",
           "image": "./assets/quickdropx.png",
           "imageWidth": 200,
           "resizeMode": "contain",
@@ -44,6 +43,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "afd7dbc8-81cf-4a0b-bed5-07da66b0aa38"
+      }
+    },
+    "owner": "imthiazragibs-organization"
   }
 }
