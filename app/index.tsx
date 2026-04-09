@@ -21,7 +21,7 @@ export default function HomeScreen() {
       >
         <View style={styles.header}>
           <Image
-            source={require('../assets/logo-half.png')}
+            source={require('../assets/quickdropx.png')}
             style={{ width: 32, height: 32, borderRadius: 6 }}
           />
           <Text style={styles.headerTitle}>Ai Support</Text>
