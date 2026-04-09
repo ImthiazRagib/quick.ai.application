@@ -18,6 +18,7 @@ export default function HomeScreen() {
         <KeyboardAvoidingView
           style={styles.container}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 120}
         >
           {/* <View style={styles.header}>
           <Image
@@ -42,6 +43,7 @@ export default function HomeScreen() {
                 contentContainerStyle={styles.listContent}
                 onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
                 onLayout={() => flatListRef.current?.scrollToEnd({ animated: true })}
+                keyboardShouldPersistTaps="handled"
               />
             )}
 

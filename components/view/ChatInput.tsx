@@ -1,9 +1,11 @@
 import { Colors } from '@/constants/theme';
+import { useChat } from '@/hooks/use-chat';
 import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { ActivityIndicator, Keyboard, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function ChatInput({ onSend, loading }: { onSend: (text: string) => Promise<void>; loading: boolean }) {
+  const { resetChat, messages } = useChat();
   const [text, setText] = useState('');
 
   const handleSend = async () => {
@@ -15,24 +17,33 @@ export default function ChatInput({ onSend, loading }: { onSend: (text: string) 
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        value={text}
-        onChangeText={setText}
-        placeholder="Ask me anything..."
-        placeholderTextColor={Colors['light'].subText}
-        multiline
-        style={styles.input}
-      />
-      <TouchableOpacity
-        onPress={handleSend}
-        style={[styles.button, loading && styles.buttonDisabled]}
-        disabled={loading}
-      >
-        {/* <Text style={styles.buttonText}>{loading ? '...' : 'Send'}</Text> */}
-        {loading ? <ActivityIndicator /> : <Feather name="send" size={16} color="#fff" />}
-      </TouchableOpacity>
+    <View>
+      {messages.length > 0 ? <View style={{ margin: 12, justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
+        <Text>Terminate Session</Text>
+        <TouchableOpacity style={[styles.button, loading && styles.buttonDisabled]} onPress={() => resetChat()}>
+         <Text style={styles.buttonText}>Terminate</Text>
+        </TouchableOpacity>
+      </View> : null}
+      <View style={styles.container}>
+        <TextInput
+          value={text}
+          onChangeText={setText}
+          placeholder="Ask me anything..."
+          placeholderTextColor={Colors['light'].subText}
+          multiline
+          style={styles.input}
+        />
+        <TouchableOpacity
+          onPress={handleSend}
+          style={[styles.button, loading && styles.buttonDisabled]}
+          disabled={loading}
+        >
+          {/* <Text style={styles.buttonText}>{loading ? '...' : 'Send'}</Text> */}
+          {loading ? <ActivityIndicator /> : <Feather name="send" size={16} color="#fff" />}
+        </TouchableOpacity>
+      </View>
     </View>
+
   );
 }
 
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     minHeight: 48,
     maxHeight: 120,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: Colors['light'].background,
     borderRadius: 20,
     paddingHorizontal: 14,
     paddingVertical: 12,
@@ -70,7 +81,7 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   buttonText: {
-    color: '#fff',
+    color: Colors['light'].surface,
     fontWeight: '600',
     fontSize: 14,
   },
