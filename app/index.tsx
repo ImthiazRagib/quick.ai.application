@@ -6,7 +6,7 @@ import { Colors } from "@/constants/theme";
 import { useChat } from "@/hooks/use-chat";
 import { Ionicons } from '@expo/vector-icons';
 import { useRef } from "react";
-import { FlatList, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
@@ -20,10 +20,13 @@ export default function HomeScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <View style={styles.header}>
-          {/* <Image source={require('@/assets/images/logo-half.png')} style={{ width: 32, height: 32, borderRadius: 6 }} /> */}
-          <Text style={styles.headerTitle}>AI Chat</Text>
+          <Image
+            source={require('../assets/logo-half.png')}
+            style={{ width: 32, height: 32, borderRadius: 6 }}
+          />
+          <Text style={styles.headerTitle}>Ai Support</Text>
           <TouchableOpacity onPress={resetChat} style={styles.clearButton}>
-            <Text style={styles.clearButtonText}><Ionicons name="trash-outline" size={22} color="#111" /></Text>
+            <Ionicons name="trash-outline" size={22} color="#111" />
           </TouchableOpacity>
         </View>
 
